@@ -1,4 +1,4 @@
-package demo.com.demo;
+package com.demo;
 
 import android.app.ListActivity;
 import android.content.Context;
