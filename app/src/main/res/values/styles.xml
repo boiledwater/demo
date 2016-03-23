@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="customBlackProgressBar" parent="android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_medium_black</item>
+    </style>
 </resources>

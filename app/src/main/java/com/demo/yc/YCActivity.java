@@ -22,7 +22,7 @@ public class YCActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Set layout
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_yc);
 
         // Save the web view
         webView = (VideoEnabledWebView) findViewById(R.id.webView);
