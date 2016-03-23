@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.demo.schedule.CellView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:text="13:00-13:30"
+    android:textColor="#333333"
+    android:textSize="16sp">
+
+</com.demo.schedule.CellView>
