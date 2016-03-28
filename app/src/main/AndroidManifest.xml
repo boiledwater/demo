@@ -33,7 +33,7 @@
             android:name="com.demo.gesturelock.MainActivity"
             android:label="@string/app_name"></activity>
         <activity
-            android:name="com.demo.schedule.BaseScheduleActivity"
+            android:name=".schedule.ScheduleManageActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.demo.R;
@@ -14,10 +15,12 @@ import java.util.ArrayList;
 /**
  * Created by hulizhong on 2016/3/24.
  */
-public class ScheduleAdapter extends BaseAdapter {
+public class ScheduleManageAdapter extends BaseAdapter {
     private ArrayList<Item> data = new ArrayList<>();
+    private Item allSelect = new Item("全选");
+    private Item blank = new Item("");
 
-    public ScheduleAdapter() {
+    public ScheduleManageAdapter() {
         Item object = new Item("09:00-09:30");
         object.status = Item.status_can_not_appoint;
         data.add(object);
@@ -48,6 +51,12 @@ public class ScheduleAdapter extends BaseAdapter {
         data.add(new Item("21:30-22:00"));
         data.add(new Item("22:00-22:30"));
         data.add(new Item("22:30-23:00"));
+
+        allSelect.status = Item.status_select_all;
+        blank.status = Item.status_blank;
+
+        data.add(allSelect);
+        data.add(blank);
     }
 
     @Override

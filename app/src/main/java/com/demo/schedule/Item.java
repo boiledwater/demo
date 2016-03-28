@@ -10,6 +10,9 @@ class Item {
     public static int status_appointed = 1;
     public static int status_can_not_appoint = 2;
     public static int status_available = 3;
+    public static int status_select_all = 4;
+    public static int status_blank = 5;
+    public boolean selected = false;
 
     public Item(String name) {
         this(name, null);
