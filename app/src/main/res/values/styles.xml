@@ -11,4 +11,27 @@
     <style name="customBlackProgressBar" parent="android:style/Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/progress_medium_black</item>
     </style>
+
+    <style name="schedule_appointed">
+        <item name="android:colorBackground">#ff5e45</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="schedule_can_not_appoint">
+        <item name="android:colorBackground">#eeeeee</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#222222</item>
+    </style>
+
+    <style name="schedule_select_all">
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#222222</item>
+    </style>
+    <style name="schedule_available">
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#222222</item>
+    </style>
 </resources>
