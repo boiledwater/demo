@@ -189,11 +189,11 @@ public class WebViewJavascriptBridge implements Serializable {
             handler.handle(data, responseCallback);
         }
     }
-
+    @JavascriptInterface
     public void send(String data) {
         send(data, null);
     }
-
+    @JavascriptInterface
     public void send(String data, WVJBResponseCallback responseCallback) {
         _sendData(data, responseCallback, null);
     }
@@ -231,13 +231,13 @@ public class WebViewJavascriptBridge implements Serializable {
     }
 
     @JavascriptInterface
-    public void callHandler(String handlerName, String data) {
-        callHandler(handlerName, data, null);
+    public void callHandler(String handlerName, String parameter) {
+        callHandler(handlerName, parameter, null);
     }
 
     @JavascriptInterface
-    public void callHandler(String handlerName, String data, WVJBResponseCallback responseCallback) {
-        _sendData(data, responseCallback, handlerName);
+    public void callHandler(String handlerName, String parameter, WVJBResponseCallback responseCallback) {
+        _sendData(parameter, responseCallback, handlerName);
     }
 
     /*

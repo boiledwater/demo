@@ -23,7 +23,9 @@
             android:label="@string/app_name"></activity>
         <activity
             android:name=".recyclerview.RecycleActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".tablayout.TablayoutActivity"
             android:label="@string/app_name">
@@ -56,16 +58,21 @@
         <activity
             android:name="com.demo.bridge.BridgeActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.demo.webview.TestWebView"
             android:screenOrientation="portrait">
 
+        </activity>
+        <activity
+            android:name="com.demo.imageview.CustomImageActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

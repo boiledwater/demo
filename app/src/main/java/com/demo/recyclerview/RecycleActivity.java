@@ -1,11 +1,20 @@
 package com.demo.recyclerview;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.demo.R;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+
+import java.util.ArrayList;
 
 /**
  * Created by user on 2016/3/21.
@@ -15,12 +24,26 @@ public class RecycleActivity extends Activity {
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private MnjRecycleAdapter adapter;
+    private ArrayList data = new ArrayList();
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycleview);
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.notifyItemRemoved(0);
+            }
+        });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+//        recyclerView.addItemDecoration(new SpacesItemDecoration(12));
+        //        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
+        recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                                              @Override
                                              public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -55,8 +78,21 @@ public class RecycleActivity extends Activity {
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new MnjRecycleAdapter();
+        adapter = new MnjRecycleAdapter() {
+            @Override
+            public VHItem onCreateItemViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.text_view, null);
+                return new VHItem(view);
+            }
+        };
+        init();
+        adapter.addAll(data);
         recyclerView.setAdapter(adapter);
     }
 
+    private void init() {
+        for (int i = 0; i < 20; i++) {
+            data.add("" + i);
+        }
+    }
 }

@@ -30,12 +30,7 @@ public class BridgeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("test", "button1");
-                bridge.callHandler("showAlert", "handler1 argument", new WebViewJavascriptBridge.WVJBResponseCallback() {
-                    @Override
-                    public void callback(String data) {
-                        Log.d("test", "callback:" + data);
-                    }
-                });
+                bridge.callHandler("showAlert", "handler1 argument");
             }
         });
     }
@@ -55,13 +50,13 @@ public class BridgeActivity extends Activity {
             if (null != jsCallback) {
                 jsCallback.callback("Java said:Right back atcha");
             }
-            bridge.send("I expect a response!", new WebViewJavascriptBridge.WVJBResponseCallback() {
-                @Override
-                public void callback(String responseData) {
-                    Log.d("test", "Got response! " + responseData);
-                }
-            });
-            bridge.send("Hi");
+//            bridge.send("I expect a response!", new WebViewJavascriptBridge.WVJBResponseCallback() {
+//                @Override
+//                public void callback(String responseData) {
+//                    Log.d("test", "Got response! " + responseData);
+//                }
+//            });
+//            bridge.send("Hi");
         }
     }
 
