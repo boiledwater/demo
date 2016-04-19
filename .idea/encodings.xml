@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/demo/bridge/BridgeActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/demo/bridge/WebViewJavascriptBridge.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/demo/gallery/BaseActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/demo/gallery/GalleryActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/demo/gallery/GridViewAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/round_corner_blue_light_grey.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bridge.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recycler_anima.xml" charset="GBK" />

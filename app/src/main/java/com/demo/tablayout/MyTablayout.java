@@ -30,6 +30,22 @@ public class MyTabLayout extends android.support.design.widget.TabLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         d80 = DisplayUtil.dip2px(getContext(), 80);
+        setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                System.err.println(tab.getText());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                System.err.println(tab.getText());
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                System.err.println(tab.getText());
+            }
+        });
     }
 
     @Override
@@ -41,6 +57,16 @@ public class MyTabLayout extends android.support.design.widget.TabLayout {
 
     public void addTab(@NonNull Tab tab) {
         super.addTab(tab);
+    }
+
+    @Override
+    public void scrollBy(int x, int y) {
+        super.scrollBy(x, y);
+    }
+
+    public void scrollTo(int x, int y) {
+        System.err.println("x:" + x);
+        super.scrollTo(x, y);
     }
 
     @NonNull
