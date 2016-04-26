@@ -38,9 +38,9 @@ public class CropActivity extends Activity {
             @Override
             public void onClick(View v) {
 //                getImagesPath(CropActivity.this);
-                inputUri = "file:/storage/emulated/0/DCIM/Camera/IMG_20160211_122548.jpg";
-                outputUri = "file:/storage/emulated/0/DCIM/Camera/IMG_20160211_122548_2.jpg";
-                File file = new File("/storage/emulated/0/DCIM/Camera/IMG_20160211_122548_2.jpg");
+                inputUri = "file:/storage/emulated/0/DCIM/Camera/IMG20160217212548.jpg";
+                outputUri = "file:/storage/emulated/0/DCIM/Camera/IMG20160217212548_2.jpg";
+                File file = new File("/storage/emulated/0/DCIM/Camera/IMG20160217212548_2.jpg");
                 try {
                     if (!file.exists()) {
                         boolean create = file.createNewFile();
@@ -106,7 +106,7 @@ public class CropActivity extends Activity {
         if (requestCode == 100 && resultCode == RESULT_OK) {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = BitmapFactory.decodeFile("/storage/emulated/0/DCIM/Camera/IMG_20160211_122548_2.jpg", options);
+            Bitmap bitmap = BitmapFactory.decodeFile("/storage/emulated/0/DCIM/Camera/IMG20160217212548_2.jpg", options);
             imageView.setImageBitmap(bitmap);
         } else if (requestCode == Crop.REQUEST_CROP && resultCode == RESULT_OK) {
             Crop.of(result.getData(), Uri.parse(outputUri)).withAspect(100, 44).withMaxSize(1080, 1080).start(CropActivity.this, 100);

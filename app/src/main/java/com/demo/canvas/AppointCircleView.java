@@ -36,32 +36,35 @@ public class AppointCircleView extends View {
         if (isInEditMode()) {
             return;
         }
-        data.add(new AppointItem("09:00", 1));
+
+        data.add(new AppointItem("09:00", 0));
         data.add(new AppointItem("09:30", 1));
         data.add(new AppointItem("10:00", 0));
         data.add(new AppointItem("10:30", 1));
-        data.add(new AppointItem("11:00", 1));
+        data.add(new AppointItem("11:00", 0));
         data.add(new AppointItem("11:30", 1));
+
         data.add(new AppointItem("12:00", 0));
-        data.add(new AppointItem("12:30", 0));
+        data.add(new AppointItem("12:30", 1));
         data.add(new AppointItem("13:00", 0));
         data.add(new AppointItem("13:30", 1));
         data.add(new AppointItem("14:00", 0));
         data.add(new AppointItem("14:30", 1));
-        data.add(new AppointItem("15:00", 1));
+        data.add(new AppointItem("15:00", 0));
         data.add(new AppointItem("15:30", 1));
-        data.add(new AppointItem("16:00", 1));
+        data.add(new AppointItem("16:00", 0));
         data.add(new AppointItem("16:30", 1));
-        data.add(new AppointItem("17:00", 1));
+        data.add(new AppointItem("17:00", 0));
         data.add(new AppointItem("17:30", 1));
         data.add(new AppointItem("18:00", 0));
         data.add(new AppointItem("18:30", 1));
-        data.add(new AppointItem("19:00", 1));
+        data.add(new AppointItem("19:00", 0));
         data.add(new AppointItem("19:30", 1));
-        data.add(new AppointItem("20:00", 1));
+        data.add(new AppointItem("20:00", 0));
         data.add(new AppointItem("20:30", 1));
-        data.add(new AppointItem("21:00", 1));
-        data.add(new AppointItem("21:30", 1));
+        data.add(new AppointItem("21:00", 0));
+
+
     }
 
     @Override
@@ -106,7 +109,7 @@ public class AppointCircleView extends View {
             float sweepAngle = (i + 1) * angle;
             sweepAngle = angle;
             System.err.println("startAngle:" + startAngle + ",sweepAngle:" + sweepAngle);
-            canvas.drawArc(rectF, startAngle, (float) (sweepAngle + 0.5), true, paint);
+            canvas.drawArc(rectF, startAngle + 270, (float) (sweepAngle + 0.5), true, paint);
 //            int x;
 //            int y;
 //            if (i < 6) {
@@ -120,6 +123,40 @@ public class AppointCircleView extends View {
 //            paint.setTextSize(30);
 //            canvas.drawText(item.time, x, y, paint);
         }
+        paint.setColor(getResources().getColor(R.color.colorPrimary));
+        paint.setTextSize(30);
+        canvas.save();
+        canvas.translate(getWidth() / 2, getHeight() / 2);
+        //draw text
+        for (int i = 0, size = data.size(); i < size; i++) {
+            AppointItem item = data.get(i);
+            float d = angle * (i) + 270;
+            float x = (float) (radius * Math.cos(d));
+            float y = (float) (radius * Math.sin(d));
+
+            System.err.println("d:" + d + ",i:" + i + ",time" + item.time + ",x:" + x + ",y:" + y);
+            int i1 = Integer.parseInt(item.time.split(":")[0]);
+            if (Integer.parseInt(item.time.split(":")[1]) != 0) {
+                continue;
+            }
+            if (i1 >= 9 && i1 < 12) {
+                x = (float) (radius * Math.sin(d));
+                y = (float) (radius * Math.cos(d));
+            }
+//            y = y + 9;
+            if (i1 >= 9 && i1 < 15) {
+                x = Math.abs(x);
+            } else {
+                x = -Math.abs(x);
+            }
+            if (i1 >= 12 && i1 <= 17) {
+                y = Math.abs(y);
+            } else {
+                y = -Math.abs(y);
+            }
+            canvas.drawText(item.time, x, y, paint);
+        }
+        canvas.restore();
         paint.setColor(getResources().getColor(R.color.white));
         canvas.drawCircle(cx, cy, (int) (radius * 0.45), paint);
     }
