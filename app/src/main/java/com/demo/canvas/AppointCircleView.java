@@ -84,6 +84,7 @@ public class AppointCircleView extends View {
         float cy = cx;
         float radius = (float) (sw * 0.31);
 
+        
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(getResources().getColor(R.color.theme_gray));
