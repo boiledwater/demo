@@ -132,29 +132,43 @@ public class AppointCircleView extends View {
         for (int i = 0, size = data.size(); i < size; i++) {
             AppointItem item = data.get(i);
             float d = angle * (i) + 270;
-            float x = (float) (radius * Math.cos(d));
-            float y = (float) (radius * Math.sin(d));
+            float x = (float) (radius * Math.cos(Math.toRadians(d + angle / 2)));
+            float y = (float) (radius * Math.sin(Math.toRadians(d + angle / 2)));
 
             System.err.println("d:" + d + ",i:" + i + ",time" + item.time + ",x:" + x + ",y:" + y);
             int i1 = Integer.parseInt(item.time.split(":")[0]);
             if (Integer.parseInt(item.time.split(":")[1]) != 0) {
                 continue;
             }
-            if (i1 >= 9 && i1 < 12) {
-                x = (float) (radius * Math.sin(d));
-                y = (float) (radius * Math.cos(d));
-            }
-//            y = y + 9;
-            if (i1 >= 9 && i1 < 15) {
+//            if (i1 >= 9 && i1 < 12) {
+//                x = (float) (radius * Math.sin(d));
+//                y = (float) (radius * Math.cos(d));
+//            }
+
+            if (i1 >= 9 && i1 <= 15) {
                 x = Math.abs(x);
             } else {
                 x = -Math.abs(x);
             }
-            if (i1 >= 12 && i1 <= 17) {
+            if (i1 >= 12 && i1 <= 18) {
                 y = Math.abs(y);
             } else {
                 y = -Math.abs(y);
             }
+//            if (y < 0) {
+//                y += 9;
+//            } else
+            if (y > 0) {
+                y += 21;
+            }
+            if (x < 0) {
+                x -= 72;
+//                y -= 12;
+            }
+
+// else if (x > 0) {
+//               x += 15;
+//            }
             canvas.drawText(item.time, x, y, paint);
         }
         canvas.restore();
