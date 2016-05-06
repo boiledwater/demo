@@ -30,7 +30,12 @@ public class BridgeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("test", "button1");
-                bridge.callHandler("showAlert", "handler1 argument");
+                bridge.callHandler("showAlert", "handler1 argument", new WebViewJavascriptBridge.WVJBResponseCallback() {
+                    @Override
+                    public void callback(String data) {
+                        System.err.println("data:" + data);
+                    }
+                });
             }
         });
     }

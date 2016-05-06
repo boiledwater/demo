@@ -125,7 +125,7 @@ public class AppointCircleView extends View {
 //            canvas.drawText(item.time, x, y, paint);
         }
         paint.setColor(getResources().getColor(R.color.colorPrimary));
-        paint.setTextSize(30);
+        paint.setTextSize(DisplayUtil.sp2px(getContext(), 12));
         canvas.save();
         canvas.translate(getWidth() / 2, getHeight() / 2);
         //draw text
@@ -162,7 +162,7 @@ public class AppointCircleView extends View {
                 y += 21;
             }
             if (x < 0) {
-                x -= 72;
+                x -= 81;
 //                y -= 12;
             }
 
