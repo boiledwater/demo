@@ -82,6 +82,7 @@ public class RecycleActivity extends Activity {
             @Override
             public VHItem onCreateItemViewHolder(ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.text_view, null);
+                System.err.println(view.getLayoutParams());
                 return new VHItem(view);
             }
         };

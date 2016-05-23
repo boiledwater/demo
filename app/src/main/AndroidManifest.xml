@@ -29,7 +29,11 @@
         <activity
             android:name=".recyclerview.RecycleActivity"
             android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".tablayout.TablayoutActivity"
@@ -83,11 +87,11 @@
         <activity
             android:name="com.demo.bridge.BridgeActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name="com.demo.webview.TestWebView"
@@ -116,9 +120,9 @@
         <activity android:name="com.soundcloud.android.crop.MyCropImageActivity" />
         <activity android:name="com.demo.badgeview.TabActivity">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
     </application>
