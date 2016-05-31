@@ -3,6 +3,7 @@ package com.demo.recyclerview;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 
 /**
@@ -34,5 +35,30 @@ public class MnjRecyclerView extends RecyclerView {
     @Override
     protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
         return super.checkLayoutParams(p);
+    }
+
+    @Override
+    protected void onMeasure(int widthSpec, int heightSpec) {
+        super.onMeasure(widthSpec, heightSpec);
+//        System.err.println("mode:" + MeasureSpec.getMode(heightSpec));
+//        System.err.println("size:" + MeasureSpec.getSize(heightSpec));
+//        System.err.println("height:" + getMeasuredHeight());
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent e) {
+        boolean b = super.onInterceptTouchEvent(e);
+//        System.err.println("b:" + b);
+        return b;
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+//        System.err.println("t:" + t + ",oldt:" + oldt);
+    }
+    public void onScrolled(int dx, int dy) {
+        // Do nothing
+//        System.err.println("dx:" + dx + ",dy:" + dy);
     }
 }
