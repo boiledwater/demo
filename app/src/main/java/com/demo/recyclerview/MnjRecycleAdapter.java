@@ -46,9 +46,9 @@ public class MnjRecycleAdapter extends RecyclerView.Adapter {
     public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
         if (viewType == TYPE_ITEM) {
-            onBindHeaderViewHolder(holder, position);
-        } else if (viewType == TYPE_HEADER) {
             onBindItemViewHolder(holder, position);
+        } else if (viewType == TYPE_HEADER) {
+            onBindHeaderViewHolder(holder, position);
         } else if (viewType == TYPE_FOOTER) {
             onBindFooterViewHolder(holder, position);
         }

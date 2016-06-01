@@ -1,7 +1,6 @@
 package com.demo.recyclerview;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.demo.R;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -70,7 +70,8 @@ public class RecycleActivity extends Activity {
                                              @Override
                                              public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                                                  super.onScrolled(recyclerView, dx, dy);
-                                                 System.err.println("--dx:" + dx + ",dy:" + dy);
+//                                                 System.err.println("--dx:" + dx + ",dy:" + dy);
+                                                 System.err.println("canScrollVertically:" + recyclerView.canScrollVertically(-1));
                                              }
                                          }
 
@@ -82,7 +83,13 @@ public class RecycleActivity extends Activity {
             @Override
             public VHItem onCreateItemViewHolder(ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.text_view, null);
+                System.err.println(view.getLayoutParams());
                 return new VHItem(view);
+            }
+
+            public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+                TextView textView = (TextView) holder.itemView.findViewById(R.id.text_tv);
+                textView.setText(position + "");
             }
         };
         init();
