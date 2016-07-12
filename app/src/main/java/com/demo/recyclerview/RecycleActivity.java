@@ -51,15 +51,16 @@ public class RecycleActivity extends Activity {
                                                  int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
                                                  if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                                                      System.err.println("--SCROLL_STATE_IDLE--");
-                                                     if (lastVisibleItem == adapter.getItemCount() - 1) {
-                                                         adapter.add(adapter.getItemCount());
-                                                         recyclerView.post(new Runnable() {
-                                                             @Override
-                                                             public void run() {
-                                                                 adapter.notifyDataSetChanged();
-                                                             }
-                                                         });
-                                                     }
+                                                     System.err.println("canScrollVertically:" + recyclerView.canScrollVertically(-1));
+//                                                     if (lastVisibleItem == adapter.getItemCount() - 1) {
+////                                                         adapter.add(adapter.getItemCount());
+//                                                         recyclerView.post(new Runnable() {
+//                                                             @Override
+//                                                             public void run() {
+//                                                                 adapter.notifyDataSetChanged();
+//                                                             }
+//                                                         });
+//                                                     }
                                                  } else if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
                                                      System.err.println("--SCROLL_STATE_DRAGGING--");
                                                  } else {
@@ -71,7 +72,7 @@ public class RecycleActivity extends Activity {
                                              public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                                                  super.onScrolled(recyclerView, dx, dy);
 //                                                 System.err.println("--dx:" + dx + ",dy:" + dy);
-                                                 System.err.println("canScrollVertically:" + recyclerView.canScrollVertically(-1));
+//                                                 System.err.println("canScrollVertically:" + recyclerView.canScrollVertically(-1));
                                              }
                                          }
 
@@ -98,7 +99,7 @@ public class RecycleActivity extends Activity {
     }
 
     private void init() {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 40; i++) {
             data.add("" + i);
         }
     }

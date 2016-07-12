@@ -63,13 +63,7 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.demo.pinnedheaderlistView.PinnedMainActivity"
-            android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name="com.demo.canvas.CircleActivity">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
@@ -100,30 +94,33 @@
         </activity>
         <activity
             android:name="com.demo.imageview.CustomImageActivity"
-            android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.demo.crop.CropActivity"
             android:screenOrientation="portrait">
+            <!-- <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>-->
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name="com.soundcloud.android.crop.MyCropImageActivity" />
+        <activity android:name="com.demo.badgeview.TabActivity"></activity>
+
+        <activity android:name=".viewpager.MyViewPagerActivity">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 
             <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name="com.soundcloud.android.crop.MyCropImageActivity" />
-        <activity android:name="com.demo.badgeview.TabActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".rounder.RoundActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
