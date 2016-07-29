@@ -31,27 +31,27 @@ public class ImageViewExt extends ImageView {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        scrolller = new Scroller(getContext());
-        mDetector = new GestureDetector(mListener);
-//        setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.err.println("---------------");
-//                scrolller.startScroll(200, 200, 200, 200, 5000);
-//            }
-//        });
-    }
-
-    private GestureDetector.OnGestureListener mListener = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            scrollBy(0, (int) distanceY);
-            return true;
-        }
-    };
+//    @Override
+//    protected void onFinishInflate() {
+//        super.onFinishInflate();
+//        scrolller = new Scroller(getContext());
+//        mDetector = new GestureDetector(mListener);
+////        setOnClickListener(new OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                System.err.println("---------------");
+////                scrolller.startScroll(200, 200, 200, 200, 5000);
+////            }
+////        });
+//    }
+//
+//    private GestureDetector.OnGestureListener mListener = new GestureDetector.SimpleOnGestureListener() {
+//        @Override
+//        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+//            scrollBy(0, (int) distanceY);
+//            return true;
+//        }
+//    };
 
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
@@ -61,31 +61,31 @@ public class ImageViewExt extends ImageView {
 
     float dX, dY;
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                dX = getX() - event.getRawX();
-                dY = getY() - event.getRawY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                animate()
-//                        .x(event.getRawX() + dX)
-                        .y(event.getRawY() + dY)
-                        .setDuration(0)
-                        .start();
-                break;
-            case MotionEvent.ACTION_UP:
-                animator = ObjectAnimator
-                        .ofFloat(this, "y", getY(), 0)
-                        .setDuration(500);
-                animator.setInterpolator(new DecelerateInterpolator());
-                animator.start();
-                break;
-            default:
-        }
-        return super.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        switch (event.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                dX = getX() - event.getRawX();
+//                dY = getY() - event.getRawY();
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                animate()
+////                        .x(event.getRawX() + dX)
+//                        .y(event.getRawY() + dY)
+//                        .setDuration(0)
+//                        .start();
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                animator = ObjectAnimator
+//                        .ofFloat(this, "y", getY(), 0)
+//                        .setDuration(500);
+//                animator.setInterpolator(new DecelerateInterpolator());
+//                animator.start();
+//                break;
+//            default:
+//        }
+//        return super.onTouchEvent(event);
+//    }
 
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
@@ -131,12 +131,44 @@ public class ImageViewExt extends ImageView {
 //        invalidate();
 //    }
     // scroll y
-    public void smoothScrollTo(int destx, int desty) {
-        int scrollY = getScrollY();
-        int delta = desty - scrollY;
-        //startScroll(int startX, int startY, int dx, int dy, int duration)
-        System.err.println("destx:" + destx + ",desty:" + desty + ",scrollY:" + scrollY + ",delta:" + delta);
-        scrolller.startScroll(0, scrollY, 0, delta, 1000);
-        invalidate();
+//    public void smoothScrollTo(int destx, int desty) {
+//        int scrollY = getScrollY();
+//        int delta = desty - scrollY;
+//        //startScroll(int startX, int startY, int dx, int dy, int duration)
+//        System.err.println("destx:" + destx + ",desty:" + desty + ",scrollY:" + scrollY + ",delta:" + delta);
+//        scrolller.startScroll(0, scrollY, 0, delta, 1000);
+//        invalidate();
+//    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        System.err.println(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                dX = getX() - event.getRawX();
+                dY = getY() - event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                animate()
+//                        .x(event.getRawX() + dX)
+                        .y(event.getRawY() + dY)
+                        .setDuration(0)
+                        .start();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    float translationY = getTranslationY();
+
+                }
+                ObjectAnimator animator = ObjectAnimator
+                        .ofFloat(this, "y", getY(), 0)
+                        .setDuration(500);
+                animator.setInterpolator(new DecelerateInterpolator());
+                animator.start();
+                break;
+            default:
+        }
+        return super.onTouchEvent(event);
     }
 }
