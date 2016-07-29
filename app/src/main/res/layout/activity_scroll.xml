@@ -18,7 +18,8 @@
             android:layout_gravity="center"
             android:background="@android:color/black"
             android:scaleType="centerInside"
-            android:src="@color/colorPrimary" />
+            android:src="@color/colorPrimary"
+             />
 
         <TextView
             android:layout_width="@dimen/d120"

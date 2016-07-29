@@ -14,7 +14,7 @@ public class ScrollActivity extends Activity {
 
     private int d120;
     private int d60;
-    private View view;
+    private ImageViewExt view;
     private FrameLayout fl;
 
     @Override
@@ -22,28 +22,28 @@ public class ScrollActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll);
         fl = (FrameLayout) findViewById(R.id.fl);
-        view = findViewById(R.id.image);
+        view = (ImageViewExt) findViewById(R.id.image);
         d120 = (int) getResources().getDimension(R.dimen.d120);
         d60 = (int) getResources().getDimension(R.dimen.d60);
-//        fl.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                System.err.println(v.getScrollX() + "," + v.getScrollY());
-////                v.scrollTo(d120, d120);
-////                view.postDelayed(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        view.scrollBy(d60, d60);
-////                        System.err.println(view.getScrollX() + "," + view.getScrollY());
-////                    }
-////                },1000);
-////                System.err.println(v.getScrollX() + "," + v.getScrollY());
-////                view.offsetLeftAndRight(d60);
-//
-//                System.err.println("---------------------");
+        fl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 //                System.err.println(v.getScrollX() + "," + v.getScrollY());
-//                System.err.println(v.getLeft() + "," + v.getRight());
-//            }
-//        });
+                view.smoothScrollTo(d120, d120);
+//                view.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        view.scrollBy(d60, d60);
+//                        System.err.println(view.getScrollX() + "," + view.getScrollY());
+//                    }
+//                },1000);
+//                System.err.println(v.getScrollX() + "," + v.getScrollY());
+//                view.offsetLeftAndRight(d60);
+
+                System.err.println("---------------------onClick");
+                System.err.println(v.getScrollX() + "," + v.getScrollY());
+                System.err.println(v.getLeft() + "," + v.getRight());
+            }
+        });
     }
 }

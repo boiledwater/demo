@@ -29,11 +29,11 @@
         <activity
             android:name=".recyclerview.RecycleActivity"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".tablayout.TablayoutActivity"
@@ -60,7 +60,22 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.demo.scroll.ScrollActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name="com.demo.pull.PullActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.demo.pinnedheaderlistView.PinnedMainActivity"
             android:screenOrientation="portrait"></activity>

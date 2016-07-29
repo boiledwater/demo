@@ -1,6 +1,7 @@
 package com.demo.recyclerview;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.demo.R;
@@ -36,6 +38,12 @@ public class RecycleActivity extends Activity {
             @Override
             public void onClick(View v) {
                 adapter.notifyItemRemoved(0);
+                new DatePickerDialog(RecycleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                    }
+                }, 2016, 7, 13).show();
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
