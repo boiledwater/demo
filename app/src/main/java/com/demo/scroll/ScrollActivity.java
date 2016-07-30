@@ -14,7 +14,7 @@ public class ScrollActivity extends Activity {
 
     private int d120;
     private int d60;
-    private View view;
+    private ImageViewExt view;
     private FrameLayout fl;
 
     @Override
@@ -22,14 +22,20 @@ public class ScrollActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll);
         fl = (FrameLayout) findViewById(R.id.fl);
-        view = findViewById(R.id.image);
+        view = (ImageViewExt) findViewById(R.id.image);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         d120 = (int) getResources().getDimension(R.dimen.d120);
         d60 = (int) getResources().getDimension(R.dimen.d60);
 //        fl.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 ////                System.err.println(v.getScrollX() + "," + v.getScrollY());
-////                v.scrollTo(d120, d120);
+//                view.smoothScrollTo(d120, d120);
 ////                view.postDelayed(new Runnable() {
 ////                    @Override
 ////                    public void run() {
@@ -40,7 +46,7 @@ public class ScrollActivity extends Activity {
 ////                System.err.println(v.getScrollX() + "," + v.getScrollY());
 ////                view.offsetLeftAndRight(d60);
 //
-//                System.err.println("---------------------");
+//                System.err.println("---------------------onClick");
 //                System.err.println(v.getScrollX() + "," + v.getScrollY());
 //                System.err.println(v.getLeft() + "," + v.getRight());
 //            }
