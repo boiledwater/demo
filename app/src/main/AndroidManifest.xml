@@ -53,6 +53,11 @@
         <activity
             android:name="com.demo.scroll.ScrollActivity"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name="com.demo.fragment.MainFragmentActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
