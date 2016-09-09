@@ -29,9 +29,19 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">#222222</item>
     </style>
+
     <style name="schedule_available">
         <item name="android:colorBackground">@android:color/white</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#222222</item>
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
+    </style>
+
+    <style name="CustomDialogAnimation">
+        <item name="android:windowEnterAnimation">@animator/zoom_from_left_corner_right_in</item>
+        <item name="android:windowExitAnimation">@animator/zoom_from_left_corner_right_out</item>
     </style>
 </resources>
