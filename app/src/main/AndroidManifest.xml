@@ -66,10 +66,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.demo.anim.shared_element.SharedElement1Activity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".anim.explode.ExplodeAnimActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
