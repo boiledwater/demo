@@ -14,7 +14,7 @@ import com.demo.R;
 public class Adapter extends PagerAdapter {
     @Override
     public int getCount() {
-        return 14;
+        return 2;
     }
 
     @Override
