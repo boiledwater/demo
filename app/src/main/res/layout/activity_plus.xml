@@ -5,7 +5,15 @@
     android:layout_height="match_parent">
 
     <com.demo.anim.plus.PlusView
+        android:id="@+id/pv_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
 
+    <ImageView
+        android:id="@+id/iv_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/indicator_code_lock_point_area_red_holo2" />
 </RelativeLayout>

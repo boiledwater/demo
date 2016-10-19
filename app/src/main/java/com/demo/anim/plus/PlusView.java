@@ -6,7 +6,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +24,7 @@ public class PlusView extends FrameLayout {
     private ImageView ivDecrease;
     private boolean expand = false;
     private int maxRightMargin;
+    public ValueChange valueChange;
 
     public PlusView(Context context) {
         super(context);
@@ -59,6 +59,9 @@ public class PlusView extends FrameLayout {
                 } else {
                     expand();
                 }
+                if (valueChange != null) {
+                    valueChange.plus(1);
+                }
             }
         });
         tvText = (TextView) view.findViewById(R.id.tv_text);
@@ -70,6 +73,9 @@ public class PlusView extends FrameLayout {
                     int value = Integer.parseInt(tvText.getText().toString());
                     if (value > 1) {
                         tvText.setText((value - 1) + "");
+                        if (valueChange != null) {
+                            valueChange.decrease(1);
+                        }
                     } else {
                         shrink();
                     }
@@ -94,7 +100,7 @@ public class PlusView extends FrameLayout {
         shrinkAnim = ObjectAnimator.ofInt(new MarginLP((MarginLayoutParams) ivDecrease.getLayoutParams()), "rightMargin", 0, maxRightMargin);
         shrinkAnim.setDuration(1000);                  // Duration in milliseconds
         shrinkAnim.setInterpolator(new DecelerateInterpolator());  // E.g. Linear, Accelerate, Decelerate
-        shrinkAnim.addListener(new Animator.AnimatorListener(){
+        shrinkAnim.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
 
@@ -136,5 +142,11 @@ public class PlusView extends FrameLayout {
             lp.rightMargin = rightMargin;
             ivDecrease.setLayoutParams(lp);
         }
+    }
+
+    interface ValueChange {
+        void plus(int value);
+
+        void decrease(int value);
     }
 }
