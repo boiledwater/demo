@@ -57,8 +57,21 @@ public class MnjRecyclerView extends RecyclerView {
         super.onScrollChanged(l, t, oldl, oldt);
 //        System.err.println("t:" + t + ",oldt:" + oldt);
     }
+
     public void onScrolled(int dx, int dy) {
         // Do nothing
 //        System.err.println("dx:" + dx + ",dy:" + dy);
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        ViewGroup.LayoutParams layoutParams = super.generateLayoutParams(p);
+        layoutParams.width = LayoutParams.FILL_PARENT;
+        return layoutParams;
+    }
+
+    @Override
+    public void setLayoutManager(LayoutManager layout) {
+        super.setLayoutManager(layout);
     }
 }

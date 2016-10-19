@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.demo.DisplayUtil;
 import com.demo.R;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -47,7 +48,7 @@ public class RecycleActivity extends Activity {
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-//        recyclerView.addItemDecoration(new SpacesItemDecoration(12));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(DisplayUtil.dip2px(getBaseContext(), 50)));
         //        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -85,7 +86,14 @@ public class RecycleActivity extends Activity {
                                          }
 
         );
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this) {
+            @Override
+            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
+                RecyclerView.LayoutParams layoutParams = super.generateDefaultLayoutParams();
+                layoutParams.width = ViewGroup.LayoutParams.FILL_PARENT;
+                return layoutParams;
+            }
+        };
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MnjRecycleAdapter() {

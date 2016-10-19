@@ -50,7 +50,7 @@ public class MyTabLayout extends android.support.design.widget.TabLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(d80 * 14, MeasureSpec.EXACTLY);
+//        widthMeasureSpec = MeasureSpec.makeMeasureSpec(d80 * 14, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         System.err.println("w:" + getMeasuredWidth() + ",h:" + getMeasuredHeight());
     }
