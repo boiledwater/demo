@@ -11,16 +11,16 @@ import com.demo.R;
  */
 public class PlusActivity extends Activity {
 
-    private PlusView pvStart;
+    private PlusView2 pvStart;
     private View ivEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plus);
-        pvStart = (PlusView) findViewById(R.id.pv_start);
+        pvStart = (PlusView2) findViewById(R.id.pv_start);
         ivEnd = findViewById(R.id.iv_end);
-        pvStart.valueChange = new PlusView.ValueChange() {
+        pvStart.valueChange = new PlusView2.ValueChange() {
             @Override
             public void plus(int value) {
                 AnimationUtil.curve(PlusActivity.this, R.layout.image_view, pvStart, ivEnd);
