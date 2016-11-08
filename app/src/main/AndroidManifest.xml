@@ -72,6 +72,9 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".anim.plus.PlusActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".canvas.ClockActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
