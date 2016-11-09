@@ -40,37 +40,35 @@ public class ClockView extends View {
         canvas.drawCircle(cx, cy, radius, circlePaint);
 
         canvas.translate(cx, cy);
-        for (int i = 0; i < 24; i++) {
-            if (i % 6 == 0) {
-                Paint boldLinePaint = new Paint();
-                boldLinePaint.setColor(Color.parseColor("#000000"));
+        Paint boldLinePaint = new Paint();
+        boldLinePaint.setColor(Color.parseColor("#000000"));
 
-                Paint fontPaint = new Paint();
+        Paint fontPaint = new Paint();
+
+        fontPaint.setColor(Color.parseColor("#000000"));
+
+        float startX, startY, stopX, stopY;
+        float offset = 15;
+
+        for (int i = 0; i < 24; i++) {
+            int degrees = i * 15;
+            if (i > 0)
+                canvas.rotate(15);
+            startX = 0;
+            startY = -(radius - offset);
+            stopX = 0;
+            stopY = -radius;
+            canvas.drawLine(startX, startY, stopX, stopY, boldLinePaint);
+
+            String text = (i) + "";
+            if (i % 6 == 0) {
+                canvas.save();
+                canvas.translate(startX, startY);
                 fontPaint.setTextSize(getResources().getDimension(R.dimen.sp14));
-                fontPaint.setColor(Color.parseColor("#000000"));
-                float startX, startY, stopX, stopY;
-                float offset = 15;
-                if (i == 0) {
-                    startX = 0;
-                    startY = -(radius - offset);
-                    stopX = 0;
-                    stopY = -radius;
-                    canvas.drawLine(startX, startY, stopX, stopY, boldLinePaint);
-                    canvas.save();
-                    canvas.translate(startX, startY);
-                    canvas.drawText(i + "", -fontPaint.measureText(i + "") / 2, 10, fontPaint);
-                    canvas.restore();
-                } else if (i == 6) {
-                    startX = (radius - offset);
-                    startY = 0;
-                    stopX = radius;
-                    stopY = 0;
-                    canvas.drawLine(startX, startY, stopX, stopY, boldLinePaint);
-                    canvas.save();
-                    canvas.translate(startX, startY);
-                    canvas.drawText(i + "", -10, -fontPaint.measureText(i + "") / 2, fontPaint);
-                    canvas.restore();
-                }
+                canvas.drawText(text, -fontPaint.measureText(text) / 2, offset * 2, fontPaint);
+                canvas.restore();
+            } else {
+//                fontPaint.setTextSize(getResources().getDimension(R.dimen.sp10));
             }
         }
     }
