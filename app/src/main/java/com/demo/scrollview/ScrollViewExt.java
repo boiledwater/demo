@@ -23,6 +23,9 @@ public class ScrollViewExt extends ScrollView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        System.err.println("---------------------------------------");
+        System.err.println(MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY);
+        System.err.println(MeasureSpec.getSize(heightMeasureSpec));
     }
 
     @Override
