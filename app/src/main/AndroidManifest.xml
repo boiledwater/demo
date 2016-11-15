@@ -115,6 +115,8 @@
         <activity android:name="com.demo.badgeview.TabActivity"></activity>
         <activity android:name="com.demo.scrollview.ScrollViewActivity"></activity>
         <activity android:name="com.demo.bezier.BezierActivity">
+        </activity>
+        <activity android:name="com.demo.bezier.Bezier2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
