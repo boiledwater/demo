@@ -4,7 +4,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:name=".DemoApplication"
         android:allowBackup="true"
@@ -116,7 +121,8 @@
         <activity android:name="com.demo.scrollview.ScrollViewActivity"></activity>
         <activity android:name="com.demo.bezier.BezierActivity"></activity>
         <activity android:name="com.demo.bezier.Bezier2Activity"></activity>
-        <activity android:name="com.demo.canvas.CanvasSaveLayerActivity">
+        <activity android:name="com.demo.canvas.CanvasSaveLayerActivity"></activity>
+        <activity android:name="com.demo.permission.PermissionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
