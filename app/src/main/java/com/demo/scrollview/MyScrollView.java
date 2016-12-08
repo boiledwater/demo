@@ -18,6 +18,7 @@ public class MyScrollView extends ViewGroup {
     private int mMaxWidth;
     private float mLastX;
     private float mLastY;
+    private boolean down;
 
     public MyScrollView(Context context) {
         super(context);
@@ -65,46 +66,35 @@ public class MyScrollView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
         float y = event.getY();
-        int dx = 0;
         int dy = 0;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
                 }
-                mLastX = x;
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
                 }
-                dx = (int) (mLastX - x);
                 dy = (int) (mLastY - y);
-                if (dx < 0) {
-                    if (dx + getScrollX() < 0) {
-                        dx = -getScrollX();
-                    }
-                } else if (dx > 0) {
-                    int maxW = (int) (mMaxWidth - getWidth());
-                    if (dx > maxW - getScrollX()) {
-                        dx = maxW - getScrollX();
-                    }
-                }
                 if (dy < 0) {
+                    down = true;
+                    //下滑
                     if (getScaleY() + dy < 0) {
                         dy = -getScrollY();
                     }
                 } else if (dy > 0) {
+                    //上滑
+                    down = false;
                     int maxH = mMaxHeight - getHeight();
                     if (maxH < dy + getScrollY()) {
                         dy = maxH - getScrollY();
                     }
                 }
-                scrollBy(dx, dy);
-                mLastX = x;
+                scrollBy(0, dy);
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
@@ -114,13 +104,13 @@ public class MyScrollView extends ViewGroup {
                 int curry = getScrollY();
                 int i = 0;
                 for (; i < mHeights.size(); i++) {
-                    if (mHeights.get(i) > curry) {
+                    if (mHeights.get(i) >= curry) {
                         break;
                     }
                 }
                 View child = getChildAt(i);
-                int height = child.getHeight() / 3;
-                if (getScrollY() > child.getBottom() - height) {
+                int deltY = child.getHeight() / 2;
+                if (getScrollY() > deltY) {
                     child = getChildAt(i + 1);
                     int viewHeight = child.getHeight();
                     if (i + 1 == mHeights.size() - 1 && viewHeight < getHeight()) {
@@ -128,10 +118,10 @@ public class MyScrollView extends ViewGroup {
                     } else {
                         dy = child.getTop() - getScrollY();
                     }
-                } else if (getScrollY() < child.getTop() + height) {
+                } else if (getScrollY() < child.getTop() + deltY) {
                     dy = child.getTop() - getScrollY();
                 }
-                mScroller.startScroll(getScrollX(), getScrollY(), 0, dy);
+                mScroller.startScroll(0, getScrollY(), 0, dy);
                 invalidate();
                 break;
         }
