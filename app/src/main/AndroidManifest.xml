@@ -122,7 +122,8 @@
         <activity android:name="com.demo.bezier.BezierActivity"></activity>
         <activity android:name="com.demo.bezier.Bezier2Activity"></activity>
         <activity android:name="com.demo.canvas.CanvasSaveLayerActivity"></activity>
-        <activity android:name="com.demo.permission.PermissionActivity">
+        <activity android:name="com.demo.permission.PermissionActivity"></activity>
+        <activity android:name="com.demo.scrollview.MyScrollViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
