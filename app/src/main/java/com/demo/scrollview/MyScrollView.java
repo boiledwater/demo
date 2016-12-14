@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
+import com.demo.DisplayUtil;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  */
 public class MyScrollView extends ViewGroup {
 
-    private int mMaxHeight;
+    private int mMaxHeight = 0;
     private int mMaxWidth;
     private float mLastX;
     private float mLastY;
@@ -40,16 +42,20 @@ public class MyScrollView extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childCount = getChildCount();
+        mMaxHeight = 0;
         for (int i = 0; i < childCount; i++) {
             View view = getChildAt(i);
-            int right = view.getRight();
+            int right = view.getMeasuredWidth();
+            System.err.println("i=" + i + "-------------------");
+            System.err.println(l + "," + mMaxHeight + "," + right + "," + (mMaxHeight + view.getMeasuredHeight()));
             view.layout(l, mMaxHeight, right, mMaxHeight + view.getMeasuredHeight());
             mMaxHeight += view.getMeasuredHeight();
             mHeights.add(mMaxHeight);
-            if (right > mMaxWidth) {
-                mMaxWidth = right;
-            }
+//            if (right > mMaxWidth) {
+//                mMaxWidth = right;
+//            }
         }
+        System.err.println(mHeights.size());
     }
 
     @Override
@@ -57,7 +63,7 @@ public class MyScrollView extends ViewGroup {
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View view = getChildAt(i);
-            measureChild(view, widthMeasureSpec, heightMeasureSpec);
+            measureChild(view, DisplayUtil.getScreenWidth(getContext()), DisplayUtil.getScreenHeight(getContext()));
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -68,6 +74,7 @@ public class MyScrollView extends ViewGroup {
     public boolean onTouchEvent(MotionEvent event) {
         float y = event.getY();
         int dy = 0;
+        System.err.println(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {
@@ -83,46 +90,47 @@ public class MyScrollView extends ViewGroup {
                 if (dy < 0) {
                     down = true;
                     //下滑
-                    if (getScaleY() + dy < 0) {
-                        dy = -getScrollY();
-                    }
+//                    if (getScrollY() + dy < 0) {
+//                        dy = -getScrollY();
+//                    }
                 } else if (dy > 0) {
                     //上滑
                     down = false;
-                    int maxH = mMaxHeight - getHeight();
-                    if (maxH < dy + getScrollY()) {
-                        dy = maxH - getScrollY();
-                    }
+//                    int maxH = mMaxHeight - getHeight();
+//                    if (maxH < dy + getScrollY()) {
+//                        dy = maxH - getScrollY();
+//                    }
                 }
+                System.err.println(dy);
                 scrollBy(0, dy);
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
-                if (mHeights.isEmpty()) {
-                    return true;
-                }
-                int curry = getScrollY();
-                int i = 0;
-                for (; i < mHeights.size(); i++) {
-                    if (mHeights.get(i) >= curry) {
-                        break;
-                    }
-                }
-                View child = getChildAt(i);
-                int deltY = child.getHeight() / 2;
-                if (getScrollY() > deltY) {
-                    child = getChildAt(i + 1);
-                    int viewHeight = child.getHeight();
-                    if (i + 1 == mHeights.size() - 1 && viewHeight < getHeight()) {
-                        dy = child.getBottom() - getHeight() - getScrollY();
-                    } else {
-                        dy = child.getTop() - getScrollY();
-                    }
-                } else if (getScrollY() < child.getTop() + deltY) {
-                    dy = child.getTop() - getScrollY();
-                }
-                mScroller.startScroll(0, getScrollY(), 0, dy);
-                invalidate();
+//                if (mHeights.isEmpty()) {
+//                    return true;
+//                }
+//                int curry = getScrollY();
+//                int i = 0;
+//                for (; i < mHeights.size(); i++) {
+//                    if (mHeights.get(i) >= curry) {
+//                        break;
+//                    }
+//                }
+//                View child = getChildAt(i);
+//                int deltY = child.getHeight() / 2;
+//                if (getScrollY() > deltY) {
+//                    child = getChildAt(i + 1);
+//                    int viewHeight = child.getHeight();
+//                    if (i + 1 == mHeights.size() - 1 && viewHeight < getHeight()) {
+//                        dy = child.getBottom() - getHeight() - getScrollY();
+//                    } else {
+//                        dy = child.getTop() - getScrollY();
+//                    }
+//                } else if (getScrollY() < child.getTop() + deltY) {
+//                    dy = child.getTop() - getScrollY();
+//                }
+//                mScroller.startScroll(0, getScrollY(), 0, dy);
+//                invalidate();
                 break;
         }
         return true;

@@ -6,28 +6,35 @@
 
     <com.demo.scrollview.MyScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#656565">
+        android:layout_height="match_parent">
 
-        <View
-            android:layout_width="1280dp"
+        <TextView
+            android:layout_width="400dp"
             android:layout_height="400dp"
-            android:background="#50acde" />
+            android:background="#50acde"
+            android:gravity="center"
+            android:text="1" />
 
-        <View
-            android:layout_width="720dp"
+        <TextView
+            android:layout_width="400dp"
             android:layout_height="400dp"
-            android:background="#cc5e" />
+            android:background="#cc5e"
+            android:gravity="center"
+            android:text="2" />
 
-        <View
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="400dp"
             android:layout_height="400dp"
-            android:background="#88acde88" />
+            android:background="#88acde88"
+            android:gravity="center"
+            android:text="3" />
 
-        <View
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="400dp"
             android:layout_height="400dp"
-            android:background="#55bc88" />
+            android:background="#55bc88"
+            android:gravity="center"
+            android:text="4" />
     </com.demo.scrollview.MyScrollView>
 
 </FrameLayout>
