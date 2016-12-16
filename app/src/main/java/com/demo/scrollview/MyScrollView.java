@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * Created by HuLiZhong on 2016/12/8.
  */
 public class MyScrollView extends ViewGroup {
-
     private int mMaxHeight = 0;
     private int mMaxWidth;
     private float mLastX;
@@ -46,16 +45,10 @@ public class MyScrollView extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             View view = getChildAt(i);
             int right = view.getMeasuredWidth();
-            System.err.println("i=" + i + "-------------------");
-            System.err.println(l + "," + mMaxHeight + "," + right + "," + (mMaxHeight + view.getMeasuredHeight()));
             view.layout(l, mMaxHeight, right, mMaxHeight + view.getMeasuredHeight());
             mMaxHeight += view.getMeasuredHeight();
             mHeights.add(mMaxHeight);
-//            if (right > mMaxWidth) {
-//                mMaxWidth = right;
-//            }
         }
-        System.err.println(mHeights.size());
     }
 
     @Override
