@@ -36,7 +36,7 @@ public class MyTransitionActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                startActivity(view, mAdapter.getItem(position));
+                startActivity(view, mAdapter.getItem(position).replaceAll("^\\d+", ""));
             }
         });
     }
@@ -53,8 +53,7 @@ public class MyTransitionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MessageActivity.class);
         intent.putExtra("msg", content);
 
-        ActivityOptionsCompat compat = ActivityOptionsCompat
-                .makeSceneTransitionAnimation(this, pairs.toArray(new Pair[pairs.size()]));
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairs.toArray(new Pair[pairs.size()]));
         ActivityCompat.startActivity(this, intent, compat.toBundle());
     }
 
@@ -78,7 +77,7 @@ public class MyTransitionActivity extends AppCompatActivity {
 
         @Override
         public String getItem(int position) {
-            return CONTENT;
+            return position + CONTENT;
         }
 
         @Override

@@ -2,11 +2,13 @@ package com.demo.anim;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
+import com.demo.DisplayUtil;
 import com.demo.R;
 
 /**
@@ -21,6 +23,12 @@ public class AnimActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anmi);
         imageview = (ImageView) findViewById(R.id.image);
+        imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageview.setTranslationY(DisplayUtil.dip2px(getBaseContext(), 20));
+            }
+        });
     }
 
     @Override

@@ -42,8 +42,8 @@ public class MessageActivity extends AppCompatActivity {
         });
 
         MyTransition transition = new MyTransition();
-        transition.setPositionDuration(300);
-        transition.setSizeDuration(300);
+        transition.setPositionDuration(3000);
+        transition.setSizeDuration(3000);
         transition.setPositionInterpolator(new FastOutLinearInInterpolator());
         transition.setSizeInterpolator(new FastOutSlowInInterpolator());
         transition.addTarget("message");

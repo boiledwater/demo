@@ -31,6 +31,7 @@ public class MyTransition extends Transition {
     @Override
     public void captureStartValues(TransitionValues transitionValues) {
         View view = transitionValues.view;
+        System.err.println("captureStartValues:" + view);
         Rect rect = new Rect();
         view.getHitRect(rect);
 
@@ -42,6 +43,7 @@ public class MyTransition extends Transition {
 
     @Override
     public void captureEndValues(TransitionValues transitionValues) {
+        System.err.println("captureEndValues:" + transitionValues.view);
         transitionValues.values.put(TOP, 0);
         transitionValues.values.put(HEIGHT, transitionValues.view.getHeight());
 
@@ -50,9 +52,12 @@ public class MyTransition extends Transition {
 
     @Override
     public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues, final TransitionValues endValues) {
-        if (startValues == null || endValues == null) { return null;}
+        if (startValues == null || endValues == null) {
+            return null;
+        }
 
         final View endView = endValues.view;
+        System.err.println("endView:" + endView);
 
         final int startTop = (int) startValues.values.get(TOP);
         final int startHeight = (int) startValues.values.get(HEIGHT);
@@ -62,9 +67,11 @@ public class MyTransition extends Transition {
         ViewCompat.setTranslationY(endView, startTop);
         endView.getLayoutParams().height = startHeight;
         endView.requestLayout();
-
+        //位置向上移动
         ValueAnimator positionAnimator = ValueAnimator.ofInt(startTop, endTop);
-        if (mPositionDuration > 0) { positionAnimator.setDuration(mPositionDuration);}
+        if (mPositionDuration > 0) {
+            positionAnimator.setDuration(mPositionDuration);
+        }
         positionAnimator.setInterpolator(mPositionInterpolator);
 
         positionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -74,9 +81,11 @@ public class MyTransition extends Transition {
                 ViewCompat.setTranslationY(endView, current);
             }
         });
-
+        //高度变化
         ValueAnimator sizeAnimator = ValueAnimator.ofInt(startHeight, endHeight);
-        if (mSizeDuration > 0) { sizeAnimator.setDuration(mSizeDuration);}
+        if (mSizeDuration > 0) {
+            sizeAnimator.setDuration(mSizeDuration);
+        }
         sizeAnimator.setInterpolator(mSizeInterpolator);
 
         sizeAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
