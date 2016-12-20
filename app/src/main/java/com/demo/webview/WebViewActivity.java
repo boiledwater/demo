@@ -13,7 +13,7 @@ import com.demo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestWebView extends Activity {
+public class WebViewActivity extends Activity {
     private WebView mWebView;
     private List<String> list;
     private int mkeyCode;
@@ -36,9 +36,22 @@ public class TestWebView extends Activity {
         mWebView.post(new Runnable() {
             @Override
             public void run() {
-                mWebView.loadUrl("file:///android_asset/index.html");
+                mWebView.loadUrl("file:///android_asset/execute.html");
             }
         });
+
+        mWebView.addJavascriptInterface(new JsObject(), "jsInterface");
+
+        mWebView.addJavascriptInterface(new JsObject(), "injectedObject");
+        mWebView.loadData("", "text/html", null);
+        mWebView.loadUrl("javascript:alert(injectedObject.toString())");
+    }
+
+    class JsObject {
+        @JavascriptInterface
+        public String toString() {
+            return "injectedObject";
+        }
     }
 
     @Override
