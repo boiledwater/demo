@@ -81,7 +81,7 @@ public class MyTransition extends Transition {
                 ViewCompat.setTranslationY(endView, current);
             }
         });
-        //高度变化
+        //高度从低到高的变化
         ValueAnimator sizeAnimator = ValueAnimator.ofInt(startHeight, endHeight);
         if (mSizeDuration > 0) {
             sizeAnimator.setDuration(mSizeDuration);
