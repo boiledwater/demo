@@ -9,4 +9,6 @@
     <dimen name="d120">120dp</dimen>
     <dimen name="d60">60dp</dimen>
     <dimen name="d12">12dp</dimen>
+    <dimen name="outer_margin">16dp</dimen>
+    <dimen name="margin">8dp</dimen>
 </resources>

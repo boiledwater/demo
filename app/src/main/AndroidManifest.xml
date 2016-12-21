@@ -144,6 +144,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".transitionanimator.feed.FeedListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".transitionanimator.feed.FeedDetailActivity"></activity>
     </application>
 
 </manifest>
