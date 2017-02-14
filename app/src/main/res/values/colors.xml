@@ -13,4 +13,6 @@
     <color name="sa_green">#1E9618</color>
     <color name="sa_green_transparent">#801E9618</color>
     <color name="sa_green_dark">#146310</color>
+    <color name="cycle_border">#c2c2c2</color>
+    <color name="cycle_bg">@color/white</color>
 </resources>
