@@ -140,14 +140,16 @@
         <activity android:name=".transitionanimator.MessageActivity">
 
         </activity>
-        <activity android:name=".transitionanimator.MyTransitionActivity"></activity>
-        <activity android:name=".transitionanimator.feed.FeedListActivity"></activity>
-        <activity android:name=".transitionanimator.feed.FeedDetailActivity"></activity>
-        <activity android:name=".shortcut.ShortCutActivity">
+        <activity android:name=".transitionanimator.MyTransitionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".transitionanimator.feed.FeedListActivity"></activity>
+        <activity android:name=".transitionanimator.feed.FeedDetailActivity"></activity>
+        <activity android:name=".shortcut.ShortCutActivity">
+
         </activity>
     </application>
 

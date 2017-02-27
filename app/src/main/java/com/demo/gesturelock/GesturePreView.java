@@ -70,12 +70,13 @@ public class GesturePreView extends View {
             cx = (line + 1) * this.radius + line * DisplayUtil.dip2px(getContext(), 9.7f);
             cy = (row + 1) * this.radius + row * DisplayUtil.dip2px(getContext(), 9.7f);
 
-            paint.setColor(getResources().getColor(R.color.cycle_border));
+            paint.setColor(getResources().getColor(R.color.sa_green));
+            paint.setStyle(Paint.Style.STROKE);
             canvas.drawCircle(cx, cy, radius, paint);
             Boolean heightLight = gesture.get(i);
             if (heightLight == null || !heightLight) {
                 paint.setColor(getResources().getColor(R.color.cycle_bg));
-                canvas.drawCircle(cx, cy, radius - DisplayUtil.dip2px(getContext(), 1), paint);
+//                canvas.drawCircle(cx, cy, radius - DisplayUtil.dip2px(getContext(), 1), paint);
             }
         }
     }
