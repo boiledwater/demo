@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.demo.R;
 
@@ -29,7 +30,8 @@ public class MyTransitionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_transition_main);
-
+        System.err.println("--------------------this is debug");
+        Toast.makeText(this, "this is debug", Toast.LENGTH_SHORT).show();
         mListView = (ListView) findViewById(R.id.list);
         mAdapter = new Adapter();
         mListView.setAdapter(new Adapter());
